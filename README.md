@@ -1,24 +1,12 @@
 # electron-vue
 
-## Project setup
+## Project Build
+
 ```
-yarn install
+yarn run server:build
+yarn run electron:bulid
 ```
 
-### Compiles and hot-reloads for development
-```
-yarn serve
-```
+## Documents
 
-### Compiles and minifies for production
-```
-yarn build
-```
-
-### Lints and fixes files
-```
-yarn lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+[【Electron】使用 Electron + Vue + Antd + Python 构建桌面程序](https://www.vksir.zone/posts/electron-vue-antd-python/)
