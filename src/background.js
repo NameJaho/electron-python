@@ -3,7 +3,11 @@
 import { app, protocol, BrowserWindow } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
+import child_process from 'child_process'
+import path from 'path'
 const isDevelopment = process.env.NODE_ENV !== 'production'
+const server_path = path.join(path.dirname(__dirname), 'server', 'dist', 'server.exe')
+let server
 
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([
@@ -35,8 +39,13 @@ async function createWindow() {
   }
 }
 
+function createServer() {
+  return child_process.spawn(server_path)
+}
+
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
+  server.kill()
   // On macOS it is common for applications and their menu bar
   // to stay active until the user quits explicitly with Cmd + Q
   if (process.platform !== 'darwin') {
@@ -62,7 +71,8 @@ app.on('ready', async () => {
       console.error('Vue Devtools failed to install:', e.toString())
     }
   }
-  createWindow()
+  server = createServer()
+  await createWindow()
 })
 
 // Exit cleanly on request from parent process in development mode.
