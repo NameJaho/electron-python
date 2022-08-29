@@ -9,7 +9,9 @@
     "electron:build": "vue-cli-service electron:build",
     "electron:serve": "vue-cli-service electron:serve",
     "postinstall": "electron-builder install-app-deps",
-    "postuninstall": "electron-builder install-app-deps"
+    "postuninstall": "electron-builder install-app-deps",
+    "server:build": "cd server && pyinstaller server.spec",
+    "server:serve": "cd server && python server.py"
   },
   "main": "background.js",
   "dependencies": {
