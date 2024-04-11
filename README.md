@@ -3,10 +3,15 @@
 ## Project Build
 
 ```
+npm install 
 yarn run server:build
 yarn run electron:bulid
 ```
 
-## Documents
+## 原 repository
+ https://github.com/vksir/electron-vue-example
+ 
+运行报错 `Error: error:0308010C:digital envelope routines::unsupported`
 
-[【Electron】使用 Electron + Vue + Antd + Python 构建桌面程序](https://www.vksir.zone/posts/electron-vue-antd-python/)
+package.json 中修改 `electron:build`=
+`SET NODE_OPTIONS=--openssl-legacy-provider && vue-cli-service electron:build`
